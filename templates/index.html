@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        li {
+            background: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Library Management System</h1>
+    <div style="text-align:center; margin-bottom: 20px;">
+        <a href="{{ url_for('add_book') }}">Add Book</a>
+    </div>
+    <ul>
+        {% for book in books %}
+            <li>
+                <span>{{ book.title }} by {{ book.author }} ({{ book.year }}) - {{ book.genre }}</span>
+                <a href="{{ url_for('delete_book', book_id=book['_id']) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
